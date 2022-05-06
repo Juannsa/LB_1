@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 06.05.2022 16:38:51
+-- Create Date: 06.05.2022 17:06:45
 -- Design Name: 
--- Module Name: Tb_Anti_Bouncing - Behavioral
+-- Module Name: Tb_Anti_Bouncing2 - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -18,13 +18,12 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
  LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
  
-ENTITY Tb_Anti_Bouncing IS
-END Tb_Anti_Bouncing;
+ENTITY tb_alu IS
+END tb_alu;
  
 ARCHITECTURE behavior OF Tb_Anti_Bouncing IS 
  
@@ -33,8 +32,8 @@ ARCHITECTURE behavior OF Tb_Anti_Bouncing IS
     COMPONENT Anti_Bouncing
     PORT(
          clk : IN  std_logic;
-         button_in : IN  std_logic;
          rst : IN  std_logic;
+         button_in : IN  std_logic;
          button_out : OUT  std_logic
         );
     END COMPONENT;
