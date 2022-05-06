@@ -38,26 +38,19 @@ end Tb_Signal_Synchronizer;
 architecture TestBench of Tb_Signal_Synchronizer is
 
     component Signal_Synchronizerr is
-        Port ( Async : in  std_logic;
-               clk   : in  std_logic;
-               rst   : in  std_logic; 
-               Sync  : out std_logic);
+        Port ( Async : in  bit;
+               clk   : in  bit;
+               Sync  : out bit);
     end component;
     
-signal Tb_Async,Tb_clk,Tb_rst : std_logic := '0';
-signal  Tb_Sync : std_logic ;
+signal Tb_Async,Tb_clk : bit := '0';
+signal  Tb_Sync : bit ;
 begin
 
     UUT: Signal_Synchronizerr port map
                 
-         (Async => Tb_Async, clk  => Tb_clk,rst => Tb_rst,  Sync => Tb_Sync);
+         (Async => Tb_Async, clk  => Tb_clk,  Sync => Tb_Sync);
                 
-
-            Sync_Start: process
-                        Tb_rst <= '0';
-                        wait;
-                        
-                        end process Sync_Start;
 
             clk_50 : process
             
