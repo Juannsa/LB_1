@@ -61,7 +61,13 @@ begin
         
         elsif (rising_edge(clk)) then
         
+          
+        
             if (button_in = btn_active) then
+            
+                    -- ESTO SE PODRIA PLANTEAR LARGANDO UN LOOP CON EL CONTADOR AL FINAL Y PREGUNTAR.
+                    --- ASI DIRECTAMENTE CADA VEZ QUE VEO UN PULSO LARGO EL CONTADOR Y PREGUNTO AL FINAL
+                    -- DE LA CUENTA, SI SIGUE EN ALTO, DOY EL BOTON, SI ESTA EN BAJO, REINICIO CUENTA Y BOTON ABAJO.
                     
                     if(count = max_count) then
                         count <= 0;
@@ -78,6 +84,9 @@ begin
               else
               
                     button_out <= '0';
+                    if (count /= 0 and count < 20) then
+                    count <= count + 1;
+                    end if;
               
               end if;                                 
         end if;
