@@ -35,9 +35,9 @@ USE ieee.numeric_std.ALL;
 entity Anti_Bouncing is
     port(  
             clk       : in std_logic;
-            botton_in : in std_logic; 
+            button_in : in std_logic; 
             rst       : in std_logic;
-            botton_out: out std_logic);
+            button_out: out std_logic);
          
 end Anti_Bouncing;
 
@@ -54,20 +54,20 @@ begin
         An_b : process (rst,clk)
         begin
         
-        if(rst = '1') then
+        if(rst = '0') then
         
-            botton_out <= '0';
+            button_out <= '0';
             count <=  0;
         
         elsif (rising_edge(clk)) then
         
-            if (botton_in = btn_active) then
+            if (button_in = btn_active) then
                     
                     if(count = max_count) then
                         count <= 0;
                             
-                            if(botton_in = btn_active) then
-                                  botton_out <= '1';
+                            if(button_in = btn_active) then
+                                  button_out <= '1';
                             end if;
                      else
                      
@@ -77,7 +77,7 @@ begin
                      
               else
               
-                    botton_out <= '0';
+                    button_out <= '0';
               
               end if;                                 
         end if;
