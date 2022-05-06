@@ -32,8 +32,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity Signal_Synchronizerr is
     Port ( Async : in bit;
-           clk  : in bit; 
-           Sync : out bit);
+           clk  : in std_logic; 
+           Sync : out bit;
+           Rst : in bit := '1');
 end Signal_Synchronizerr;
 
 architecture Synchronizer of Signal_Synchronizerr is
@@ -42,10 +43,13 @@ signal T_Sync : bit;
 
 begin
    
-   Sync_Proc: process (clk)
+   Sync_Proc: process (Rst,clk)
    begin
+            if (Rst = '0') then 
             
-            if (rising_edge(clk)) then
+            Sync <= '0';
+            
+            elsif (rising_edge(clk)) then
                       T_Sync <= Async;
                       Sync   <= T_Sync;
             end if;
